@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: advanced-python-app
+  labels:
+    app: advanced-python-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: advanced-python-app
+  template:
+    metadata:
+      labels:
+        app: advanced-python-app
+    spec:
+      containers:
+        - name: advanced-python-app
+          image: manderl/advanced-python-app:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 5000
+          env:
+            - name: PORT
+              value: "5000"
